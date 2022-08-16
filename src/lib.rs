@@ -40,7 +40,9 @@ pub fn greet2() {
 }
 
 #[wasm_bindgen]
-pub async fn carrick() -> String{
-    let marketData = get_binmarket_constant().await.unwrap();
-    return format!("{:?}", marketData);
+pub async fn carrick() -> JsValue {
+    utils::set_panic_hook();
+    let market_data = get_binmarket_constant().await.unwrap();
+    let market_data_string = format!("{:?}", market_data);
+    return JsValue::from_str(&market_data_string);
 }
