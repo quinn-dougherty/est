@@ -8,3 +8,8 @@ node_modules
 dist
 .direnv
 .env
+data
+.ipynb_checkpoints
+.mypy_cache
+.auctex-auto
+.ob-jupyter

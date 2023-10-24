@@ -1,16 +1,18 @@
 { pkgs, rust }:
 with pkgs;
 let
+  pname = "manifoldpy";
+  manifoldpyGhLatest = fetchFromGitHub {
+    owner = "vluzko";
+    repo = pname;
+    rev = "361680bdd7f27aabf1cb3246494b7655fcfe9980";
+    sha256 = "sha256-qU5h1ZVgW9bvG5gp82zqs9oDhM7tJBo/hqjeh3ABMbE=";
+  };
   manifoldpy = python310Packages.buildPythonPackage {
     pname = "manifoldpy";
     version = "October23-2023";
-    src = fetchFromGitHub {
-      owner = "vluzko";
-      repo = "manifoldpy";
-      rev = "361680bdd7f27aabf1cb3246494b7655fcfe9980";
-      sha256 = "sha256-qU5h1ZVgW9bvG5gp82zqs9oDhM7tJBo/hqjeh3ABMbE=";
-    };
-    # doCheck = false;  # I don't know what this does.
+    src = manifoldpyGhLatest;
+    doCheck = false;
     propagatedBuildInputs = with python310Packages; [
       attrs
       matplotlib
@@ -32,7 +34,7 @@ let
       types-requests
       pandas
       altair
-      # manifoldpy
+      manifoldpy
     ];
   };
 in with nodePackages_latest; [
@@ -59,5 +61,6 @@ in with nodePackages_latest; [
   # Streamlit
   python
   streamlit
-  poetry
+  jupyter
+  # poetry
 ]

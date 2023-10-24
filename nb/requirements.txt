@@ -1,0 +1,7 @@
+streamlit
+manifoldpy
+pandas
+requests
+matplotlib
+altair
+jupyter
