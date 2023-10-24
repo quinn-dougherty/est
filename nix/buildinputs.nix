@@ -42,12 +42,14 @@ in with nodePackages_latest; [
   cargo
   cargo-generate
   npm
+  nodejs
   ts-node
   typescript
   typescript-language-server
   clippy
   rust-analyzer
   # Linters
+  eslint
   rustfmt
   nixfmt
   prettier

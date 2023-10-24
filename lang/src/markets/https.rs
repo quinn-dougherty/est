@@ -1,5 +1,5 @@
 use crate::markets::{ManifoldBinary, ManifoldBinaryJson, Proba, ClosedUnitInterval};
-use reqwest::blocking::Client;
+use reqwest::Client;
 
 pub async fn get_binmarket_constant() -> Result<ManifoldBinary, Box<dyn std::error::Error>> {
     let client = Client::new();
