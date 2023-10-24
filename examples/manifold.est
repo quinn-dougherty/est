@@ -1,0 +1,4 @@
+x = Manifold.est(creator="Austin", market_slug="")
+y = Manifold.est(creator="Quinn", market_slug="")
+
+Lib.aggregate((x + y) / 2) // should evaluate to a given utility measurements.
