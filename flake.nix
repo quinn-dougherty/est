@@ -3,19 +3,23 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    flake-parts.url = "github:hercules-ci/flake-parts";
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    flake-parts.url = "github:hercules-ci/flake-parts";
+    poetry2nix = {
+      url = "github:nix-community/poetry2nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, rust-overlay, flake-parts }@inputs:
+  outputs = { self, nixpkgs, flake-parts, rust-overlay, poetry2nix }@inputs:
     let
       system = "x86_64-linux";
-      overlays = [ rust-overlay.overlay ];
+      overlays = [ rust-overlay.overlays.default ];
       pkgs = import nixpkgs { inherit system overlays; };
-      rust = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
+      rust = pkgs.rust-bin.fromRustupToolchainFile ./lang/rust-toolchain.toml;
     in {
       devShells.${system}.default =
         import ./nix/shell.nix { inherit pkgs rust; };
