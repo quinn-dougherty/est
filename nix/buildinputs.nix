@@ -6,6 +6,7 @@ with nodePackages_latest; [
   cargo
   cargo-generate
   npm
+  ts-node
   typescript
   typescript-language-server
   clippy

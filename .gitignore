@@ -1,4 +1,4 @@
-/target
+lang/target
 **/*.rs.bk
 Cargo.lock
 bin/
