@@ -1,0 +1,40 @@
+#+title: Main
+
+The volume of an n-sphere of radius r is
+
+#+BEGIN_SRC latexpreview
+$$\frac{\pi^{\frac{n}{2}}}{\Gamma\left(\frac{n}{2} + 1\right)}r^n.$$
+#+END_SRC
+
+#+BEGIN_SRC jupyter-python :session py
+# from manifoldpy import api
+import matplotlib.pyplot as plt
+x = 27
+y = 34
+print(x * y + 999875)
+plt.scatter(x=[0,1,2,3,4], y=[x*y,y,x,x^2-y,x*y]);
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+: 1000793
+[[file:./.ob-jupyter/8d83740d07b5f64d758a2ba39c1d9799acfe897e.png]]
+:END:
+#+BEGIN_SRC jupyter-python :session py
+# from manifoldpy import api
+import matplotlib.pyplot as plt
+x = 27
+y = 34
+print(x * y + 99999875)
+plt.scatter(x=[0,1,2,3,4], y=[x+y / (x / y + y / x - 2 * x),y,x,x^2-y,x*y]);
+#+END_SRC
+
+#+RESULTS:
+:RESULTS:
+: 100000793
+[[file:./.ob-jupyter/ba197b35608cf4c511784fc59d830f445003e8b7.png]]
+:END:
+
+#+begin_quote
+ok, I wonder what this is all about....
+#+end_quote

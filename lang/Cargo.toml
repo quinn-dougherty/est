@@ -18,7 +18,7 @@ crate-type = ["cdylib", "rlib"]
 default = ["console_error_panic_hook"]
 
 [build-dependencies]
-lalrpop = "0.20.1"
+lalrpop = "0.20.0"
 
 [dependencies]
 wasm-bindgen = "0.2.84"
@@ -40,7 +40,7 @@ console_error_panic_hook = { version = "0.1.7", optional = true }
 wasm-bindgen-futures = "0.4.32"
 
 # language engineering and http
-lalrpop-util = "0.20.1"
+lalrpop-util = "0.20.0"
 regex = "1.10.2"
 reqwest = { version = "0.11.22", features = ["json", "blocking"] }
 serde = { version = "1.0.189", features = ["derive"] }

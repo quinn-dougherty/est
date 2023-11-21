@@ -1,6 +1,9 @@
 import path from "path";
-import { Configuration as WebpackConfiguration, HotModuleReplacementPlugin } from "webpack";
-import { Configuration as WebpackDevServerConfiguration } from 'webpack-dev-server';
+import {
+  Configuration as WebpackConfiguration,
+  HotModuleReplacementPlugin,
+} from "webpack";
+import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 interface Configuration extends WebpackConfiguration {
@@ -49,7 +52,7 @@ const config: Configuration = {
     historyApiFallback: true,
     port: 4000,
     open: true,
-    hot: true
+    hot: true,
   },
 };
 
