@@ -3,21 +3,20 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
-    flake-parts.url = "github:hercules-ci/flake-parts";
-    rust-overlay = {
-      url = "github:oxalica/rust-overlay";
+    parts.url = "github:hercules-ci/flake-parts";
+    fmt = {
+      url = "github:numtide/treefmt-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nci = {
+      url = "github:yusdacra/nix-cargo-integration";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = { self, nixpkgs, flake-parts, rust-overlay }@inputs:
-    let
-      system = "x86_64-linux";
-      overlays = [ rust-overlay.overlays.default ];
-      pkgs = import nixpkgs { inherit system overlays; };
-      rust = pkgs.rust-bin.fromRustupToolchainFile ./lang/rust-toolchain.toml;
-    in {
-      devShells.${system}.default =
-        import ./nix/shell.nix { inherit pkgs rust; };
+  outputs = { self, nixpkgs, parts, fmt, nci }@inputs:
+    parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-darwin" ];
+      imports = [ fmt.flakeModule ./nix/checks/format.nix nci.flakeModule ./nix/lang/crates.nix ];
     };
 }

@@ -37,7 +37,8 @@ let
       manifoldpy
     ];
   };
-in with nodePackages_latest; [
+in
+with nodePackages_latest; [
   # Wasm
   rust
   wasm-pack
@@ -49,7 +50,7 @@ in with nodePackages_latest; [
   typescript
   typescript-language-server
   clippy
-  rust-analyzer
+  # rust-analyzer  # system rust-analyzer works better with emacs.
   # Linters
   eslint
   rustfmt
@@ -63,4 +64,8 @@ in with nodePackages_latest; [
   streamlit
   jupyter
   # poetry
+  pandoc
+  texlive.combined.scheme-small
+  graphviz
+  emacsPackages.preview-dvisvgm
 ]
